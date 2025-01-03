@@ -1,0 +1,78 @@
+package com.geraxiquin.restapi.model
+
+import jakarta.persistence.*
+
+
+@Entity
+@Table(name = "paciente")
+data class Paciente(
+    var nombres: String = "",
+    var apellidos: String = "",
+    var fechaNac: String = "",
+    var encargado: String = "",
+    var numeroCasa: String = "",
+    var zona: String = "",
+    var calle: String = "",
+    var avenida: String = "",
+    var referenciaDireccion: String = "",
+    var observacion1: String = "",
+    var observacio2: String = "",
+    var observacio3: String = "",
+    var carnet: String = "",
+    var hpb_1: String = "",
+    var bcg_1: String = "",
+    var ipv_1: String = "",
+    var tpv_1: String = "",
+    var opv_1: String = "",
+    var pentavalente1_1: String = "",
+    var pentavalente2_1: String = "",
+    var pentavalente3_1: String = "",
+    var rotarix1_1: String = "",
+    var rotarix2_1: String = "",
+    var neumococo1_1: String = "",
+    var neumococo2_1: String = "",
+    var spr1_4: String = "",
+    var spr2_4: String = "",
+    var neumococoR1_4: String = "",
+    var opvR1_4: String = "",
+    var dptR1_4: String = "",
+    var opvR2_4: String = "",
+    var dptR2_4: String = "",
+    var opvipv_1_6: String = "",
+    var opv2_1_6: String = "",
+    var opv3_1_6: String = "",
+    var opvR1_1_6: String = "",
+    var opvR2_1_6: String = "",
+    var pentavalente1_1_6: String = "",
+    var pentavalente2_1_6: String = "",
+    var pentavalente3_1_6: String = "",
+    var dptr1_1_6: String = "",
+    var dptr2_1_6: String = "",
+    var sprr1_2_6: String = "",
+    var sprr2_2_6: String = "",
+    var spr_campania: String = "",
+    var opv_campani0a: String = "",
+    var chispitas1: Boolean = false,
+    var chispitas2: Boolean = false,
+    var chispitas3: Boolean = false,
+    var chispitas4: Boolean = false,
+    var chispitas5: Boolean = false,
+    var chispitas6: Boolean = false,
+    var chispitas7: Boolean = false,
+    var chispitas8: Boolean = false,
+    var desparacitante1: Boolean = false,
+    var desparacitante2: Boolean = false,
+    var desparacitante3: Boolean = false,
+    var desparacitante4: Boolean = false,
+    var desparacitante5: Boolean = false,
+    var desparacitante6: Boolean = false,
+    var desparacitante7: Boolean = false,
+    var desparacitante8: Boolean = false,
+    var desparacitante9: Boolean = false,
+    var desparacitante10: Boolean = false,
+    var vitaminaA: Boolean = false
+) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    var id: Int = 0
+}

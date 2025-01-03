@@ -1,3 +1,3 @@
 package com.geraxiquin.restapi.exception
 
-class NotFoundException(message:String?):Exception(message)
+class NotFoundException(message: String?) : Exception(message)

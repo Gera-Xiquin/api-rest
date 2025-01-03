@@ -1,9 +1,9 @@
 package com.geraxiquin.restapi.web
 
-import com.geraxiquin.restapi.business.IUsuarioBusiness
+import com.geraxiquin.restapi.business.IPacienteBusiness
 import com.geraxiquin.restapi.exception.BusinnesExceprion
 import com.geraxiquin.restapi.exception.NotFoundException
-import com.geraxiquin.restapi.model.Usuario
+import com.geraxiquin.restapi.model.Paciente
 import com.geraxiquin.restapi.utils.Constants
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpHeaders
@@ -11,25 +11,24 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@RestController
-@RequestMapping(Constants.URL_BASE_USUARIOS)
-class UsuarioRestContoller {
+class PacienteRestContoller {
+
     @Autowired
-    val usuarioBusinness: IUsuarioBusiness? = null
+    val pacienteBusinness: IPacienteBusiness? = null
 
     @GetMapping("")
-    fun list(): ResponseEntity<List<Usuario>> {
+    fun list(): ResponseEntity<List<Paciente>> {
         return try {
-            ResponseEntity(usuarioBusinness!!.list(), HttpStatus.OK)
+            ResponseEntity(pacienteBusinness!!.list(), HttpStatus.OK)
         } catch (e: Exception) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
         }
     }
 
     @GetMapping("/{id}")
-    fun load(@PathVariable("id") idUsuario: Int): ResponseEntity<Usuario> {
+    fun load(@PathVariable("id") idPaciente: Int): ResponseEntity<Paciente> {
         return try {
-            ResponseEntity(usuarioBusinness!!.load(idUsuario), HttpStatus.OK)
+            ResponseEntity(pacienteBusinness!!.load(idPaciente), HttpStatus.OK)
         } catch (e: BusinnesExceprion) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
         } catch (e: NotFoundException) {
@@ -38,11 +37,11 @@ class UsuarioRestContoller {
     }
 
     @PostMapping("")
-    fun insert(@RequestBody usuario: Usuario): ResponseEntity<Any> {
+    fun insert(@RequestBody paciente: Paciente): ResponseEntity<Any> {
         return try {
-            usuarioBusinness!!.save(usuario)
+            pacienteBusinness!!.save(paciente)
             val responseHeader = HttpHeaders()
-            responseHeader.set("location", Constants.URL_BASE_USUARIOS + "/" + usuario.id)
+            responseHeader.set("location", Constants.URL_BASE_PACIENTES + "/" + paciente.id)
             ResponseEntity(responseHeader, HttpStatus.CREATED)
         } catch (e: BusinnesExceprion) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -50,9 +49,9 @@ class UsuarioRestContoller {
     }
 
     @PutMapping("")
-    fun update(@RequestBody usuario: Usuario): ResponseEntity<Any> {
+    fun update(@RequestBody paciente: Paciente): ResponseEntity<Any> {
         return try {
-            usuarioBusinness!!.save(usuario)
+            pacienteBusinness!!.save(paciente)
             ResponseEntity(HttpStatus.OK)
         } catch (e: BusinnesExceprion) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -60,9 +59,9 @@ class UsuarioRestContoller {
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable("id") idUsuario: Int): ResponseEntity<Any> {
+    fun delete(@PathVariable("id") idpaciente: Int): ResponseEntity<Any> {
         return try {
-            usuarioBusinness!!.remove(idUsuario)
+            pacienteBusinness!!.remove(idpaciente)
             ResponseEntity(HttpStatus.OK)
         } catch (e: BusinnesExceprion) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)

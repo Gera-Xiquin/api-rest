@@ -1,8 +1,8 @@
 package com.geraxiquin.restapi.dao
 
-import com.geraxiquin.restapi.model.Usuario
+import com.geraxiquin.restapi.model.Paciente
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface UsuarioRepository : JpaRepository<Usuario, Int>
+interface PacienteRepository : JpaRepository<Paciente, Int>

@@ -4,8 +4,15 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "usuario")
-class Usuario(val nombre: String = "", val usuario: String = "", val pass: String="") {
+class Usuario(
+    var usuario: String = "",
+    var zona: String = "",
+    var pin: String = "",
+    var orientacionDireccion: String = "",
+    var nombre: String = "",
+    var cantidadCalle: Int = 0
+) {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id:Int = 0
+    var id: Int = 0
 }
